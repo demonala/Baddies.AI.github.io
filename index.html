@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BADDIES AI WEATHER CALCULATOR</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000428, #004e92);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subheader {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ff5e62, #ff9966);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        button:hover {
+            transform: scale(1.02);
+        }
+        .loading {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .loading p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        #countdown {
+            font-weight: bold;
+            color: #ff5e62;
+        }
+        .footer {
+            font-size: 10px;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+        #jumpscare {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        #jumpscare h1 {
+            font-size: 48px;
+            color: red;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            margin-bottom: 20px;
+        }
+        #jumpscare p {
+            font-size: 24px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌪️ BADDIES AI WEATHER CALCULATOR</h1>
+        <p class="subheader">Powered by Quantum Atmospheric Machine Learning v4.2</p>
+        
+        <input type="text" id="location" placeholder="📍 ENTER YOUR EXACT LOCATION (Required for precision)">
+        
+        <select id="unit">
+            <option>🌡️ Unit: Metric (Celsius)</option>
+            <option>🌡️ Unit: Imperial (Fahrenheit)</option>
+        </select>
+        
+        <button onclick="calculateWeather()">⚡ CALCULATE WEATHER</button>
+        
+        <div class="loading" id="loading" style="display: none;">
+            <p>⚡ CALIBRATING QUANTUM SENSORS...</p>
+            <p>🔍 Detecting your location’s stupidity levels...</p>
+            <p>⌛ Processing 892TB of weather data...</p>
+            <p id="countdown">14 seconds remaining...</p>
+        </div>
+        
+        <p class="footer">© 2024 Baddies AI Labs – Not Responsible for Heart Attacks</p>
+    </div>
+    
+    <div id="jumpscare">
+        <h1>SYBAU JUST LOOK OUTSIDE BRO 🙏🏻💀</h1>
+        <p>☁️ Forecast: GET OUT YOU FUCKING LAZY</p>
+    </div>
+    
+    <script>
+        function calculateWeather() {
+            const location = document.getElementById("location").value;
+            if (!location) {
+                alert("🚨 ERROR: Your stupidity broke the quantum server.");
+                return;
+            }
+            
+            document.getElementById("loading").style.display = "block";
+            
+            let seconds = 14;
+            const countdown = setInterval(() => {
+                seconds--;
+                document.getElementById("countdown").innerHTML = `${seconds} seconds remaining...`;
+                
+                if (seconds <= 0) {
+                    clearInterval(countdown);
+                    document.body.style.background = "black";
+                    document.getElementById("jumpscare").style.display = "flex";
+                    
+                    // Play airhorn sound (optional, needs an audio file)
+                    // const audio = new Audio('airhorn.mp3');
+                    // audio.play();
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
